@@ -52,9 +52,55 @@ export default function checkForWinner(board) {
     }
   }
 
-  // Add additional winner checking logic here...
-  // Under what conditions can someone win?
+  for (let column = 0; column < board.length; column++) {
+    let firstCell = board[0][column];
 
+    if (firstCell === null) {
+      continue;
+    }
+
+    let isWinningColumn = true;
+    for (let row = 1; row < board.length; row++) {
+      if (board[row][column] !== firstCell) {
+        isWinningColumn = false;
+        break;
+      }
+    }
+
+    if (isWinningColumn) {
+      return firstCell;  
+    }
+  }
+
+  let firstDiagonalCell = board[0][0];
+  if (firstDiagonalCell !== null) {
+    let isWinningDiagonal = true;
+    for (let i = 1; i < board.length; i++) {
+      if (board[i][i] !== firstDiagonalCell) {
+        isWinningDiagonal = false;
+        break;
+      }
+    }
+
+    if (isWinningDiagonal) {
+      return firstDiagonalCell;  
+    }
+  }
+
+  let secondDiagonalCell = board[0][board.length - 1];
+  if (secondDiagonalCell !== null) {
+    let isWinningDiagonal = true;
+    for (let i = 1; i < board.length; i++) {
+      if (board[i][board.length - 1 - i] !== secondDiagonalCell) {
+        isWinningDiagonal = false;
+        break;
+      }
+    }
+
+    if (isWinningDiagonal) {
+      return secondDiagonalCell;  
+    }
+  }
 
   // Return null if no winners
   return null;
