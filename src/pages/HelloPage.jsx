@@ -45,7 +45,7 @@ export default function HelloPage() {
          * Can you find where the PageTitle component declaration is?
          */
       }
-      <PageTitle contents="Hello, JumboCode Developers!" />
+      <PageTitle contents="Hello, Henri!" />
       {
         /**
          * This is a <div> which allows us to divide a webpage
@@ -70,7 +70,7 @@ export default function HelloPage() {
         }
         <button
           className="p-3 mx-8 rounded border-green-500 bg-green-500 hover:bg-green-600 text-white"
-          onClick={() => setCount(currentCount => currentCount + 2)}
+          onClick={() => setCount(currentCount => currentCount +  1)}
         >
           Current Count: {count}
         </button>
@@ -84,7 +84,7 @@ export default function HelloPage() {
         }
         <button
           className="p-2 mx-8 rounded border bg-gray-100 hover:bg-gray-200"
-          onClick={() => setCount(100)}
+          onClick={() => setCount(0)}
         >
           Reset Count
         </button>
