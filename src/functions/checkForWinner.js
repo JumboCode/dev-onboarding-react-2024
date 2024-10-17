@@ -55,6 +55,58 @@ export default function checkForWinner(board) {
   // Add additional winner checking logic here...
   // Under what conditions can someone win?
 
+  // Checking if a player has any vertical wins
+  for (let col = 0; col < board[0].length; col++) {
+    let firstCell = board[0][col];
+
+    // Skip cols with empty first spaces
+    if (firstCell == null) {
+      continue;
+    }
+
+    let isWinningCol = true;
+    for (let row = 1; row < board.length; row++) {
+      if (board[row][col] !== firstCell) {
+        isWinningCol = false;
+        break;
+      }
+    }
+
+    if (isWinningCol) {
+      return firstCell;
+    }
+  }
+
+  // Board must be square for diagonal win
+  if (board.length == board[0].length) {
+    // Checking if a player has top left to bottom right diagonal win
+    let firstLeft = board[0][0];
+    let isWinningDiagL = true;
+
+    for (let i = 0; i < board.length; i++) {
+        if (board[i][i] !== firstLeft) {
+          isWinningDiagL = false;
+          break;
+        }
+    }
+    if (isWinningDiagL) {
+      return firstLeft;
+    }
+
+    // Checking if a player has top right to bottom left diagonal win
+    let firstRight = board[0][board[0].length-1];
+    let isWinningDiagR = true;
+
+    for (let i = 0; i < board.length; i++) {
+        if (board[i][board.length-1 - i] !== firstRight) {
+          isWinningDiagR = false;
+          break;
+        }
+    }
+    if (isWinningDiagR) {
+      return firstRight;
+    }
+  }
 
   // Return null if no winners
   return null;
