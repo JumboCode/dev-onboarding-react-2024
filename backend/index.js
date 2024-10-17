@@ -122,9 +122,27 @@ function generateBoardString(board) {
  * board from your file system and return it as the response.
  */
 app.get("/recent-board-txt", (req, res) => {
-  
+
   return res.send("Add returned text here")
+});
+
+/**
+ * Make a copy of the previous function that parses the recently saved
+ * board and returns the board as a grid (2d array)
+ */
+app.get("/recent-board", (req, res) => {
+  return res.json({
+    // Add Board Here!
+    board: [["X"]]
+  })
 })
+
+/**
+ * CHALLENGE: Create an endpoint that takes in a tic-tac-toe
+ * board and returns an "AI" move. Integrate this into the tic-tac-toe
+ * frontend such that after a player makes a move, it generates an AI move on
+ * the backend and displays the move on the frontend.
+ */
 
 // Start the server and listen at the specified port number
 app.listen(port, () => {
